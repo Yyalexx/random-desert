@@ -1,9 +1,9 @@
 import json
 
 
-def print_reciepe(name):
-    with open("5_recipes.json") as reciepes:  # ссылка на JSON-файл с рецептами
-        data = json.load(reciepes)
+def print_recipe(name):
+    with open("5_recipes.json") as recipes:  # ссылка на JSON-файл с рецептами
+        data = json.load(recipes)
 
         for field in data:
             if field["recipe_name"] == name:
@@ -15,16 +15,16 @@ def print_reciepe(name):
                 print(f'{field["text"]}\n')  # вывод инструкции по приготовлению
 
 
-def save_reciepe(name):
-    with open("5_recipes.json") as reciepes:  # ссылка на JSON файл с рецептами
-        data = json.load(reciepes)
+def save_recipe(name):
+    with open("5_recipes.json") as recipes:  # ссылка на JSON файл с рецептами
+        data = json.load(recipes)
 
-        for reciepe in data:
-            if reciepe["recipe_name"] == name:  # находим запрашиваемый рецепт в JSON файле
+        for recipe in data:
+            if recipe["recipe_name"] == name:  # находим запрашиваемый рецепт в JSON файле
                 with open("data.json", "w") as jsonfile:
-                    json.dump(reciepe, jsonfile, ensure_ascii=False)  # сохранение одного рецепта в отдельном JSON файле
+                    json.dump(recipe, jsonfile, ensure_ascii=False)  # сохранение одного рецепта в отдельном JSON файле
 
 
 # Примеры запуска функций:
-print_reciepe("Суп из сёмги с красной чечевицей рецепт на 3 порции (Европейская кухня)")
-save_reciepe("Курица с кабачками в духовке рецепт на 4 порции (Европейская кухня)")
+print_recipe("Суп из сёмги с красной чечевицей рецепт на 3 порции (Европейская кухня)")
+save_recipe("Курица с кабачками в духовке рецепт на 4 порции (Европейская кухня)")
