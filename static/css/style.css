@@ -1,0 +1,28 @@
+body {
+    height: 100vh;
+    margin: 0;
+}
+main {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: darkgray;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header,
+footer {
+    height: 10%;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;  
+}
