@@ -22,3 +22,5 @@
 ## web-application on flask:
 - **app.py** - flask приложение. Создано и протестировано в PyCharm. Для запуска необходимо устновить flask в свое виртуальное окружение. После запуска приложения веб-страница приложения будет доступна по адресу: http://127.0.0.1:5000/
 - **папка templates** - содержин шаблоны для корректного отображения страниц
+![image](https://user-images.githubusercontent.com/57331385/212469926-74f31ca8-a579-443f-a9f7-e8d53a0c2bab.png)
+![image](https://user-images.githubusercontent.com/57331385/212469940-496af632-9483-44e1-bc4d-733d27fc3b39.png)
