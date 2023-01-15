@@ -21,7 +21,7 @@ def save_recipe(name):
                 recipe = data[key]
                 return recipe
         else:
-            return {"recipe": 'SVEKLU V KASTRULU KIN EPTA I VOT TEBE ' + name}
+            return {"recipe_name": name, "ingredients": [name], "text": "Чтобы приготовить " + name.lower() + ", делаем следующее: берем "+ name.lower() + ", добавляем специи по вкусу и доводим до готовности."}
 
 
 save_recipe('Курица')
