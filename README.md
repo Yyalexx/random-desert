@@ -1,7 +1,17 @@
+  ### В папку ***eda.ru***  
+-  добавлен ноутбук **make_tbl_2.ipynb**.  
+- добавлены файлы таблиц для data base:  
+  
+    - set_ingredients.csv  
+    - recipes.csv  
+    - units.csv  
+    - ingredients.csv
+ 
+ 
  ### В папку ***eda.ru***  
 -  добавлен ноутбук **grab_all_recipe_urls.ipynb**.  
 9428 ссылок на рецепты сайта *eda.ru*  собраны в файле **all_url_df.csv**. 
--  добавлен ноутбук **scrap_recipes.ipynb** автоматического парсинта по ссылкам из **all_url_df.csv**.  
+-  добавлен ноутбук **scrap_recipes.ipynb** автоматического парсинга по ссылкам из **all_url_df.csv**.  
 - в файле **recipe_df.csv** теперь 763 рецепта, в файле **ingr_df.csv** - 759 ингредиентов (результат парсинга 800 ссылок из 9428).  
 ### Добавлена папка ***eda.ru***.  
 Структура *recipe_df.csv* и файлов *json* **ИЗМЕНИЛАСЬ!**  
