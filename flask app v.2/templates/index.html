@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Random desert</title>
+</head>
+<body>
+    <header>Header</header>
+    <main>
+        <section class="top-block">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis eligendi itaque officia perferendis quo similique tempora? Dolorem, quam qui? Exercitationem fugiat id inventore sit veritatis. Magnam nulla optio quas saepe.</p>
+            <form action="/" method="POST">
+                    <label for="food">Что хотите приготовить: </label>
+                    <input type="text" name="food" id="food" placeholder="название блюда">
+                    <button type="submit">Отправить</button>
+            </form>
+        </section>
+        <section class="block">
+            <aside class="l-block">
+                <div>
+                    <form action="" method="get">
+                        <fieldset>
+                            <legend>Выберете продукты:</legend>
+                            <div id="ingredients-list">
+                                <input type="text" class="search" placeholder="начните вводить" />
+                                <button type="submit">Искать рецепт</button>
+                                <ul class="list">
+                                    <li>
+                                        <input type="checkbox" id="ingr1" name="ingr1">
+                                        <label for="ingr1" class="ingredient">Картофель</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="ingr2" name="ingr2">
+                                        <label for="ingr2" class="ingredient">картоха</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="ingr3" name="ingr3">
+                                        <label for="ingr3" class="ingredient">Капуста</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="ingr4" name="ingr4">
+                                        <label for="ingr4" class="ingredient">кабачок</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="ingr5" name="ingr5">
+                                        <label for="ingr5" class="ingredient">Картошка</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="ingr6" name="ingr6">
+                                        <label for="ingr6" class="ingredient">баклажан</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </aside>
+
+
+            <section class="r-block">
+                {% if rec %}
+                    <ul class="recipes">
+                    {% for r in rec %}
+                        <li class="recipe">
+                            <h2>{{ r['recipe_name'] }}</h2>
+                            <p>{{ r['text'] }}</p>
+                            <ul>
+                                {% for d in r['ingredients'] %}
+                                <li>{{ d }} - {{ r['ingredients'][d] }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            </section>
+        </section>
+
+
+    </main>
+
+    <footer>Footer</footer>
+    <script src="{{ url_for('static', filename='js/list.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
