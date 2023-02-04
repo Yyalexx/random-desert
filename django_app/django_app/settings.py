@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'recipes',
     'django_filters',
+    'spurl',
 ]
 
 SITE_ID = 1
