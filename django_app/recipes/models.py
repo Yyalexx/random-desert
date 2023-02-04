@@ -6,7 +6,7 @@ class Recipe(models.Model):
     id_recipe = models.AutoField(primary_key=True)
     name_recipe = models.CharField(max_length=200)
     text_recipe = models.TextField()
-    vegetarian = models.BooleanField(default=0)
+    vegeterian = models.BooleanField(default=0)
     calories = models.FloatField(validators=[MinValueValidator(0.0, 'Калорий должно быть >= 0')])
     protein = models.FloatField(validators=[MinValueValidator(0.0, 'Белка должно быть >= 0')])
     fat = models.FloatField(validators=[MinValueValidator(0.0, 'Жиров должно быть >= 0')])
