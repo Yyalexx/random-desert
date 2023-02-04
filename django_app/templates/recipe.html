@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>{{ recipe.name_recipe }}</h1>
+<h4>Порций: {{ recipe.portions }}</h4>
+{% if recipe.vegetarian %}
+    <h4>Подходит для вегетарианцев</h4>
+{% endif %}
+
+<ul>
+{% for con in connections %}
+    {% if con.id_recipe_id == recipe.id_recipe %}
+                <li><p>{{ con.id_ingr }} - {{ con.ingr_qty_unit }}</p></li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+<p>{{ recipe.text_recipe }}</p>
+
+<table>
+    <thead>
+        <th>
+            Калории
+        </th>
+        <th>
+            Белки
+        </th>
+        <th>
+            Жиры
+        </th>
+        <th>
+            Углеводы
+        </th>
+    </thead>
+    <tr>
+        <td>
+            {{ recipe.calories }}
+        </td>
+        <td>
+            {{ recipe.protein }}
+        </td>
+        <td>
+            {{ recipe.fat }}
+        </td>
+        <td>
+            {{ recipe.carbo }}
+        </td>
+    </tr>
+</table>
+<br>
+<a href="../recipes">
+            <button>На главную</button>
+</a>
+{% endblock content %}
