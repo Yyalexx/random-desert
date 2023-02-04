@@ -1,3 +1,20 @@
+  ### Используемые версии:
+ 
+        - asgiref       3.6.0
+        - Django        4.1.6
+        - django-filter 22.1
+        - django-spurl  0.6.8
+        - pip           23.0
+        - psycopg2      2.9.5
+        - setuptools    63.2.0
+        - six           1.16.0
+        - sqlparse      0.4.3
+        - URLObject     2.4.3
+        - Postgres Version 2.5.12 (171)
+        - HTML5
+        - CSS3
+        - ES6
+  
   ### В папку ***eda.ru***  
 -  добавлен ноутбук **make_tbl_2.ipynb**.  
 - добавлены файлы таблиц для data base:  
