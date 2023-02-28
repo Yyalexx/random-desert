@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    display: flex;
+    height: 95vh;
+    height: 100%;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+    padding: 0;
+    margin: 0;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 87px;
+    text-transform: uppercase;
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 138px;
+    height: 100%;
+    margin-left: auto;
+    background-color: #FE5607;
+}
+
+.sidepanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-top-left-radius: 80px;
+    width: 582px;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 138px;
+    background-color: #FE5607;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidepanel div {
+    box-sizing: border-box;
+}
+
+h2 {
+    margin: 10px;
+    padding: 0 20px;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 87px;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+
+
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #FE5607;
+    color: white;
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+    border-radius: 50%;
+    /* padding: 10px 15px; */
+    z-index: 2;
+
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+
+.lemon {
+    width: 10%;
+    cursor: pointer;
+    animation: AnimCall 2s ease 0s infinite normal forwards;
+    animation: AnimLemon 2s ease 0s infinite normal forwards;
+    z-index: 2;
+}
+
+
+/* .lemon:hover {
+    width: 150px;
+} */
+
+.r2d2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@keyframes AnimCall {
+
+    0%,
+    100% {
+        transform: translateX(0%);
+        transform-origin: 50% 50%;
+    }
+
+    15% {
+        transform: translateX(-30px) rotate(-6deg);
+    }
+
+    30% {
+        transform: translateX(15px) rotate(6deg);
+    }
+
+    45% {
+        transform: translateX(-15px) rotate(-3.6deg);
+    }
+
+    60% {
+        transform: translateX(9px) rotate(2.4deg);
+    }
+
+    75% {
+        transform: translateX(-6px) rotate(-1.2deg);
+    }
+}
+
+
+
+/* =========================== */
+
+@keyframes AnimLemon {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: translateY(-8px);
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: translateY(8px);
+    }
+
+    80% {
+        transform: translateY(6.4px);
+    }
+
+    90% {
+        transform: translateY(-6.4px);
+    }
+}
