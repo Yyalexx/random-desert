@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <small class="text-muted">(Рецептов на нашем сайте: {{ filter.qs|length }})</small><br>
+    <small class="text-muted">(Рецептов по Вашему запросу: {{ filter|length }})</small><br>
 
     {% for recipe in recipe_page_obj %}
         <hr>

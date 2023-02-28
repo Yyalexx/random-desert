@@ -2,7 +2,10 @@
 
 {% block content %}
 <h1>{{ recipe.name_recipe }}</h1>
+<h4>{{ recipe.cuisine }}</h4>
+<h4>Категория: {{ recipe.meal_type }}</h4>
 <h4>Порций: {{ recipe.portions }}</h4>
+
 {% if recipe.vegetarian %}
     <h4>Подходит для вегетарианцев</h4>
 {% endif %}
@@ -48,7 +51,6 @@
     </tr>
 </table>
 <br>
-<a href="./">
-            <button>Назад</button>
-</a>
+<input type="button" onclick="history.back();" value="Назад"/>
+
 {% endblock content %}
