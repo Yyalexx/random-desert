@@ -4,6 +4,8 @@ from django.core.validators import MinValueValidator
 
 class Recipe(models.Model):
     id_recipe = models.AutoField(primary_key=True)
+    cuisine = models.CharField(max_length=100)
+    meal_type = models.CharField(max_length=100)
     name_recipe = models.CharField(max_length=200)
     text_recipe = models.TextField()
     vegeterian = models.BooleanField(default=0)
@@ -23,6 +25,7 @@ class Recipe(models.Model):
 class Ingredient(models.Model):
     id_ingr = models.AutoField(primary_key=True)
     name_ingr = models.CharField(max_length=100)
+    group_name_ingr = models.CharField(max_length=100, default=None)
 
     def __str__(self):
         return f'{self.name_ingr}'

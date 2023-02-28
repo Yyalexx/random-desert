@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import RecipesSearch, RecipeDetails
+from .views import RecipesSearch, RecipeDetails, SearchView
 
 urlpatterns = [
-    path('', RecipesSearch.as_view()),
+    path('', SearchView.as_view(), name='filter'),
     path('<int:pk>', RecipeDetails.as_view()),
 ]
