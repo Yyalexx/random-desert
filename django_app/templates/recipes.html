@@ -1,39 +1,81 @@
-{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="ru">
 
-{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomDessert</title>
+    <link rel="stylesheet" href="/static/css/fonts.css">
+    <link rel="stylesheet" href="/static/css/recipes.css">
+</head>
 
-    <small class="text-muted">(Рецептов по Вашему запросу: {{ filter|length }})</small><br>
+<body>
+    <header class="header">
+        <a href="http://127.0.0.1:8000">
+            <img class="logo" src="/static/images/RD_logo2.png" alt="RandomDessert logo">
+        </a>
+        <form class="search-form" id="search-form" action="/"> <!-- url для нового запроса -->
+            <div class="search">
+                <img class="search__icon" src="/static/images/loupe.svg" alt="">
+                <input class="search__field" type="text" placeholder="Рецепт, ингредиент" name="search">
+            </div>
+            <button class="btn search__btn" type="submit">Найти</button>
+        </form>
+    </header>
+    <main class="main">
+        <h1 class="request-text">По запросу «Шарлотка, яблоки, корица» найдено рецептов: {{ filter|length }}</h1>
+        <!-- что искали из БД -->
+        <section class="cards">
+            {% for recipe in recipe_page_obj %}
+            <a class="card" href={{ recipe.id_recipe }}>
+                <div>
 
-    {% for recipe in recipe_page_obj %}
-        <hr>
-        <a class="nav-link" href={{ recipe.id_recipe }}>{{ recipe.name_recipe }}</a>
-        <br>
-        {{ recipe.text_recipe|truncatewords:20 }}
-        <br>
-    {% endfor %}
+                    <img class="card__image" src="/static/images/keks.svg" alt="">
+                </div>
+                <div class="card__content">
+                    <h2 class="card__category">Выпечка и десерты</h2> <!-- категория из БД -->
+                    <h3 class="card__title">{{ recipe.name_recipe }}</h3>
+                    <div class="card__footer">
+                        <div class="card__time">
+                            25мин
+                        </div>
+                        <div class="card__rating">
+                            4.6/5
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
 
-    <hr>
-    {% load spurl %}
 
-    {% if is_paginated %}
+
+        </section>
+        {% load spurl %}
+
+        {% if is_paginated %}
 
         {% if recipe_page_obj.has_previous %}
-            <a href="{% spurl query=request.GET set_query='page=1'%}">First</a>
-            <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.previous_page_number }}'%}"><-</a>
-        {% endif %}
+        <a href="{% spurl query=request.GET set_query='page=1'%}">First</a>
+        <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.previous_page_number }}'%}"><-< /a>
+                {% endif %}
 
-        {% for num in recipe_page_obj.paginator.page_range %}
-            {% if recipe_page_obj.number == num %}
+                {% for num in recipe_page_obj.paginator.page_range %}
+                {% if recipe_page_obj.number == num %}
                 <a>{{ num }}</a>
-            {% elif num > recipe_page_obj.number|add:'-3' and num < recipe_page_obj.number|add:'3' %}
-                <a href="{% spurl query=request.GET set_query='page={{ num }}'%}">{{ num }}</a>
-            {% endif %}
+                {% elif num > recipe_page_obj.number|add:'-3' and num < recipe_page_obj.number|add:'3' %} <a
+                    href="{% spurl query=request.GET set_query='page={{ num }}'%}">{{ num }}</a>
+        {% endif %}
         {% endfor %}
 
         {% if recipe_page_obj.has_next %}
-            <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.next_page_number }}'%}">-></a>
-            <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.paginator.num_pages}}'%}">Last</a>
+        <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.next_page_number }}'%}">-></a>
+        <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.paginator.num_pages}}'%}">Last</a>
         {% endif %}
-    {% endif %}
+        {% endif %}
+    </main>
 
-{% endblock content %}
+    <script src="scr"></script>
+</body>
+
+</html>
