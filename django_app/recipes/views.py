@@ -134,8 +134,24 @@ class SearchView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filter'] = self.get_queryset()
-        paginated_filtered_recipes = Paginator(self.get_queryset(), 10)
+        paginated_filtered_recipes = Paginator(self.get_queryset(), 16)
         page_number = self.request.GET.get('page')
         recipe_page_obj = paginated_filtered_recipes.get_page(page_number)
         context['recipe_page_obj'] = recipe_page_obj
+        recipe = self.request.GET.get('recipe')
+        cuisines = self.request.GET.getlist('cuisine')
+        meal_types = self.request.GET.getlist('meal_type')
+        ingredients = self.request.GET.getlist('ingredients')
+        context['search_params'] = ""
+        if len(recipe) != 0:
+            context['search_params'] += f'{recipe}, '
+        if len(cuisines) != 0:
+            for cuisine in cuisines:
+                context['search_params'] += f'{cuisine}, '
+        if len(meal_types) != 0:
+            for meal_type in meal_types:
+                context['search_params'] += f'{meal_type}, '
+        if len(ingredients) != 0:
+            for ingredient in ingredients:
+                context['search_params'] += f'{ingredient}, '
         return context
