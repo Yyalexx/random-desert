@@ -154,4 +154,9 @@ class SearchView(ListView):
         if len(ingredients) != 0:
             for ingredient in ingredients:
                 context['search_params'] += f'{ingredient}, '
+        if len(context['search_params']) != 0:
+            context['search_params'] = context['search_params'][:-2]
+        else:
+            context['search_params'] = 'Покажите всё'
+
         return context
