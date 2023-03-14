@@ -24,7 +24,7 @@
         </form>
     </header>
     <main class="main">
-        <h1 class="request-text">По запросу «Шарлотка, яблоки, корица» найдено рецептов: {{ filter|length }}</h1>
+        <h1 class="request-text">По запросу «{{ search_params }}» найдено рецептов: {{ filter|length }}</h1>
         <!-- что искали из БД -->
         <section class="cards">
             {% for recipe in recipe_page_obj %}
