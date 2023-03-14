@@ -35,7 +35,7 @@ class SearchView(ListView):
     ordering = 'name_recipe'
     template_name = 'recipes.html'
     context_object_name = 'recipes'
-    paginate_by = 10
+    paginate_by = 16
 
     def get_queryset(self):
         recipe = self.request.GET.get('recipe')
