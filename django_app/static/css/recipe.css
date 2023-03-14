@@ -1,0 +1,36 @@
+/* .canvas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+}
+
+.unit {
+    fill: none;
+    stroke-width: 10;
+}
+
+
+
+.unit:nth-child(1) {
+    stroke: #86cfa3;
+    stroke-dasharray: 5 100;
+}
+
+.unit:nth-child(2) {
+    stroke: #a2c6e0;
+    stroke-dasharray: 10 100;
+    stroke-dashoffset: -5;
+}
+
+.unit:nth-child(3) {
+    stroke: #ffc7ec;
+    stroke-dasharray: 15 100;
+    stroke-dashoffset: -15;
+}
+
+.unit:nth-child(4) {
+    stroke: #2d7c5e;
+    stroke-dasharray: 70 100;
+    stroke-dashoffset: -30;
+} */

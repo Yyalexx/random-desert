@@ -1,46 +1,30 @@
-function dropdown1() {
-    const drop = document.getElementById("myDropdown1");
-    drop.classList.toggle("show");
-    const img = drop.parentElement.querySelector('.dropbtn img');
-    img.classList.toggle("rotate");
+const dropdowns = document.querySelectorAll('.dropdown');
+for (let dropdown of dropdowns) {
+    const btn = dropdown.querySelector('.dropbtn');
+    const menu = dropdown.querySelector('.dropdown-content');
+    const img = dropdown.querySelector('.dropbtn img');
+
+    const toggleMenu = function () {
+        menu.classList.toggle("show");
+        img.classList.toggle("rotate");
+    }
+
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    document.addEventListener("click", function (e) {
+        const target = e.target;
+        const its_menu = target == menu || menu.contains(target);
+        const its_btn = target == btn;
+        const menu_is_active = menu.classList.contains("show");
+
+        if (!its_menu && !its_btn && menu_is_active) {
+            toggleMenu();
+        }
+    });
 }
-
-function dropdown2() {
-    const drop = document.getElementById("myDropdown2");
-    drop.classList.toggle("show");
-    const img = drop.parentElement.querySelector('.dropbtn img');
-    img.classList.toggle("rotate");
-}
-
-function dropdown3() {
-    const drop = document.getElementById("myDropdown3");
-    drop.classList.toggle("show");
-    const img = drop.parentElement.querySelector('.dropbtn img');
-    img.classList.toggle("rotate");
-}
-
-
-// let dropbtn = document.querySelector('.dropbtn');
-// dropbtn.addEventListener('click', () => {
-//     let d = dropbtn.parentElement;
-//     console.log(d)
-//     d.querySelector('dropdown-content').classList.toggle("show");
-// })
-
-
-
-// window.onclick = function (event) {
-//     if ((!event.target.matches('.dropdown-content'))) {
-//         var dropdowns = document.getElementsByClassName("dropdown-content");
-//         var i;
-//         for (i = 0; i < dropdowns.length; i++) {
-//             var openDropdown = dropdowns[i];
-//             if (openDropdown.classList.contains('show')) {
-//                 openDropdown.classList.remove('show');
-//             }
-//         }
-//     }
-// }
 
 
 

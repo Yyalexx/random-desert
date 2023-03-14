@@ -29,53 +29,67 @@
         <section class="cards">
             {% for recipe in recipe_page_obj %}
             <a class="card" href={{ recipe.id_recipe }}>
-                <div>
 
-                    <img class="card__image" src="/static/images/keks.svg" alt="">
+                <div class="card__image">
+                    <img src="/static/images/keks.svg" alt="">
                 </div>
-                <div class="card__content">
-                    <h2 class="card__category">Выпечка и десерты</h2> <!-- категория из БД -->
+                <div class="card__body">
+                    <h2 class="card__category">{{ recipe.meal_type }}</h2>
                     <h3 class="card__title">{{ recipe.name_recipe }}</h3>
-                    <div class="card__footer">
+                    <div class="card__bottom">
                         <div class="card__time">
-                            25мин
+                            <span class="time">25</span>мин
                         </div>
                         <div class="card__rating">
-                            4.6/5
+                            <span class="rating">4.6</span>/5
                         </div>
                     </div>
                 </div>
             </a>
             {% endfor %}
-
-
-
         </section>
-        {% load spurl %}
 
-        {% if is_paginated %}
+        <section class="pagination">
+            <div class="pagination__content">
+                {% load spurl %}
 
-        {% if recipe_page_obj.has_previous %}
-        <a href="{% spurl query=request.GET set_query='page=1'%}">First</a>
-        <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.previous_page_number }}'%}"><-< /a>
+                {% if is_paginated %}
+
+                {% if recipe_page_obj.has_previous %}
+                <!-- <a href="{% spurl query=request.GET set_query='page=1'%}">First</a> -->
+                <a class="pagination__left"
+                    href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.previous_page_number }}'%}">
+                    <img src="/static/images/page_left_arrow.svg" alt="page_left_arrow">
+                </a>
+                {% endif %}
+                <div class="pagination__numbers">
+                    {% for num in recipe_page_obj.paginator.page_range %}
+                    {% if recipe_page_obj.number == num %}
+                    <a class="pagination__number number_current" href="">{{ num }}</a>
+                    {% elif num > recipe_page_obj.number|add:'-3' and num < recipe_page_obj.number|add:'3' %} <a
+                        class="pagination__number" href="{% spurl query=request.GET set_query='page={{ num }}'%}">
+                        {{ num }}
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                </div>
+
+                {% if recipe_page_obj.has_next %}
+
+                <a class="pagination__right"
+                    href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.next_page_number }}'%}">
+                    <img src="/static/images/page_right_arrow.svg" alt="page_right_arrow">
+                </a>
+                <!-- <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.paginator.num_pages}}'%}">Last</a> -->
+
+                {% endif %}
                 {% endif %}
 
-                {% for num in recipe_page_obj.paginator.page_range %}
-                {% if recipe_page_obj.number == num %}
-                <a>{{ num }}</a>
-                {% elif num > recipe_page_obj.number|add:'-3' and num < recipe_page_obj.number|add:'3' %} <a
-                    href="{% spurl query=request.GET set_query='page={{ num }}'%}">{{ num }}</a>
-        {% endif %}
-        {% endfor %}
-
-        {% if recipe_page_obj.has_next %}
-        <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.next_page_number }}'%}">-></a>
-        <a href="{% spurl query=request.GET set_query='page={{ recipe_page_obj.paginator.num_pages}}'%}">Last</a>
-        {% endif %}
-        {% endif %}
+            </div>
+        </section>
     </main>
 
-    <script src="scr"></script>
+    <script src="/static/js/recipes.js"></script>
 </body>
 
 </html>
