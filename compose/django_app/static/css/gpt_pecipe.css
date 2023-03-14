@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFE09D;
+}
+
+.header {
+    max-width: 1290px;
+    margin: 0 auto;
+    padding: 28.5px 0;
+
+}
+
+.logo {
+    width: 144px;
+}
+
+.title {
+    height: 551px;
+    max-width: 1290px;
+    margin: 0 auto;
+    padding: 34px 0 65px;
+    display: flex;
+}
+
+.title__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title__text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 49px;
+    color: #343440;
+}
+
+.title__ingr {
+    display: flex;
+    align-items: center;
+    width: 718px;
+    height: 270px;
+    background-color: #EDFF9D;
+}
+
+.ingr__text {
+    height: 270px;
+    padding: 48px 0 48px 40px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #343440;
+}
+
+.ingr__img {
+    align-self: flex-start;
+    width: 424px;
+}
+
+.cooking {
+    display: flex;
+    align-items: center;
+    height: 843px;
+    background-color: #FFAF9D;
+    background-image: url('../images/star4.svg');
+    background-position-x: right;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+}
+
+.cooking__content {
+    height: 100%;
+    max-width: 1290px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.cooking__text {
+    width: 50%;
+    padding-top: 65px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    color: #343440;
+}
+
+.cooking__arrow {
+    position: absolute;
+    right: 212px;
+    top: -63px;
+}
