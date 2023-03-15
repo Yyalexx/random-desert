@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from recipes.views import GPTView, HomeView
+from recipes.views import GPTView, HomeView, GPTResultView
 
 urlpatterns = [
     path('', HomeView.as_view()),
     path('admin/', admin.site.urls),
     path('recipes/', include('recipes.urls')),
     path('gpt/', GPTView.as_view()),
+    path('gpt/result/', GPTResultView.as_view(), name='gptResult')
 ]

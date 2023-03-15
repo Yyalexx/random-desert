@@ -26,6 +26,10 @@ class GPTView(TemplateView):
     template_name = 'gpt.html'
 
 
+class GPTResultView(TemplateView):
+    template_name = 'gpt_recipe.html'
+
+
 class HomeView(TemplateView):
     template_name = 'index.html'
 
