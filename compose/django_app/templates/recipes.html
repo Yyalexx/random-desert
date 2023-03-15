@@ -24,8 +24,8 @@
         </form>
     </header>
     <main class="main">
+        {% if filter|length != 0 %}
         <h1 class="request-text">По запросу «{{ search_params }}» найдено рецептов: {{ filter|length }}</h1>
-        <!-- что искали из БД -->
         <section class="cards">
             {% for recipe in recipe_page_obj %}
             <a class="card" href={{ recipe.id_recipe }}>
@@ -87,6 +87,14 @@
 
             </div>
         </section>
+        {% else %}
+        <section class="norecipe">
+            <h1 class="request-text">Упс. По запросу «{{ search_params }}» найдено рецептов: {{ filter|length }}</h1>
+
+            <img class="norecipe__img" src="/static/images/cat.svg" alt="cat">
+
+        </section>
+        {% endif %}
     </main>
 
     <script src="/static/js/recipes.js"></script>

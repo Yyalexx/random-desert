@@ -170,7 +170,7 @@ a {
 
 .circle__image {
     position: absolute;
-    /* animation: Anim_Rotate_Center 20s linear 0s infinite normal forwards; */
+    animation: Anim_Rotate_Center 20s linear 0s infinite normal forwards;
 }
 
 
