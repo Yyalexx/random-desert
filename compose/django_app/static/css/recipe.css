@@ -6,6 +6,7 @@ body {
 
 h1,
 h2,
+h3,
 p,
 section,
 ul,
@@ -100,6 +101,7 @@ li {
     background-color: #FFC100;
     padding: 30px;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .title__wrapper {
@@ -107,11 +109,11 @@ li {
     border: 4px solid #FFFFFF;
     display: flex;
     height: 100%;
-    /* position: relative; */
+    position: relative;
 
 
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     width: 100%;
 }
 
@@ -122,8 +124,9 @@ li {
     align-items: center;
     /* padding: 67px 39.5px 32px  74.5px; */
     margin: 67px 39.5px 32px 74.5px;
-
     height: auto;
+    width: 40%;
+    box-sizing: border-box;
 }
 
 .title__category {
@@ -137,7 +140,7 @@ li {
 }
 
 .title__text {
-    margin-bottom: 44px;
+    margin-bottom: 44.75px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 800;
@@ -150,8 +153,9 @@ li {
 .title__rating {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-
+    justify-self: start;
+    /* flex-grow: 1; */
+    margin-bottom: auto;
 }
 
 .rating__text {
@@ -211,11 +215,11 @@ li {
 }
 
 .title__img {
-    /* position: absolute; */
-    /* bottom: 14px;
+    position: absolute;
+    bottom: 14px;
     right: 24px;
-    width: 815px;
-    height: 730px; */
+    /* width: 50%; */
+
 }
 
 .info {
@@ -260,6 +264,7 @@ li {
 .recipe {
     max-width: 1466px;
     margin: 0 auto;
+    padding-bottom: 137px;
 }
 
 .ingredients {
@@ -268,6 +273,7 @@ li {
 
 .ingredients__head {
     display: flex;
+    align-items: center;
     margin-bottom: 24px;
 }
 
@@ -282,15 +288,20 @@ li {
 }
 
 .ingredients__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    margin-left: 79px;
+}
+
+.ingredients__text {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
     line-height: 48px;
     color: #343440;
-    margin-bottom: 24px;
-    list-style-image: url('/static/images/rectangle.svg');
-    margin-left: 79px;
+    padding-left: 20px;
 }
 
 .instruction {
@@ -299,7 +310,12 @@ li {
 
 .instruction__head {
     display: flex;
+    align-items: center;
     margin-bottom: 24px;
+}
+
+.instruction_img {
+    width: 99px;
 }
 
 .instruction_title {
@@ -321,6 +337,7 @@ li {
     font-size: 40px;
     line-height: 62px;
     color: #343440;
+    text-indent: 115px;
 }
 
 .btn_print {
@@ -343,4 +360,38 @@ li {
 .btn_print img {
     margin-right: 22px;
     margin-left: 45px;
+}
+
+
+
+@media print {
+
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    @page {
+        margin: 2cm;
+    }
+
+    p {
+        font-size: 1cm;
+    }
+
+    .search-form,
+    .title__img {
+        display: none;
+    }
+
+    .title__content {
+        width: 100%;
+    }
+
+    .title,
+    .title__wrapper {
+        height: auto;
+    }
 }

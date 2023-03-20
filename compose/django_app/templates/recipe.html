@@ -8,6 +8,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="/static/css/fonts.css">
     <link rel="stylesheet" href="/static/css/recipe.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script> -->
+
 </head>
 
 <body>
@@ -36,7 +38,7 @@
                         <img class="star_red" src="/static/images/red_star.svg" alt="red star">
                         <img class="star_red" src="/static/images/red_star.svg" alt="red star">
                         <img class="star_red" src="/static/images/red_star.svg" alt="red star">
-                        <img class="star_redwhite" src="/static/images/red_white_star.svg" alt="redwhite star">
+                        <img class="star_redwhite" src="/static/images/red_star.svg" alt="redwhite star">
                     </div>
                 </div>
                 <div class="title__bottom">
@@ -83,8 +85,10 @@
                 {% for con in connections %}
                 {% if con.id_recipe_id == recipe.id_recipe %}
 
-                <li class="ingredients__item">{{ con.id_ingr }}, {{ con.ingr_qty_unit }}</li>
-
+                <li class="ingredients__item">
+                    <img class="ingredients__img" src="/static/images/rectangle.svg" alt="rectangle">
+                    <p class="ingredients__text">{{ con.id_ingr }}, {{ con.ingr_qty_unit }}</p>
+                </li>
                 {% endif %}
                 {% endfor %}
 
@@ -97,17 +101,27 @@
             </div>
             <p class="instruction__text"> {{ recipe.text_recipe }}</p>
         </div>
-        <button class="btn btn_print"><img src="/static/images/printer.svg" alt="printer"> Печать</button>
+        <button class="btn btn_print"><img src="/static/images/printer.svg" alt="printer">Печать</button>
+        <!-- <button class="btn btn_pdf"><img src="" alt="">Сохранить в .pdf</button>
+        <button onclick="downloadPdf()">Сохранить PDF</button> -->
     </section>
 
 
 
 
 
-    <h4>{{ recipe.cuisine }}</h4>
+    <!-- <h4>{{ recipe.cuisine }}</h4>
     {% if recipe.vegetarian %}
     <h4>Подходит для вегетарианцев</h4>
     {% else %}
     <h4>НЕ подходит для вегетарианцев</h4>
     {% endif %}
-    <input type="button" onclick="history.back();" value="Назад" />
+    <input type="button" onclick="history.back();" value="Назад" /> -->
+
+
+    <script src="/static/js/recipe.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+</body>
