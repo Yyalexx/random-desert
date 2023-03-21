@@ -1,3 +1,16 @@
+const modal = document.querySelector(".modal");
+const btnModalClose = document.querySelector('.modal__btn__close');
+
+document.addEventListener('DOMContentLoaded', () => {
+    modal.style.display = 'block';
+});
+
+btnModalClose.addEventListener('click', () => {
+    modal.style.display = 'none';
+})
+
+
+
 const dropdowns = document.querySelectorAll('.dropdown');
 for (let dropdown of dropdowns) {
     const btn = dropdown.querySelector('.dropbtn');
