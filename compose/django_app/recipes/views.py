@@ -1,8 +1,17 @@
+import json
+import os
+
+
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
 from .models import Recipe, Connections
+
+import openai as ai
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class RecipeDetails(DetailView):
@@ -28,6 +37,58 @@ class GPTView(TemplateView):
 
 class GPTResultView(TemplateView):
     template_name = 'gpt_recipe.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        ingredients = self.request.GET.getlist('ingredients')
+        user_text = 'Придумай, пожалуйста, рецепт блюда со следующими ингредиентами: ' + ', '.join(ingredients) + \
+                    '. Выведи его в формате json, название рецепта помести в поле "name", ' \
+                    'список ингредиентов помести в поле "spisok", ' \
+                    'инструкцию приготовления помести в поле "instruction".'
+
+        # --------------------------------получение ответа от ChatGPT--------------------------------
+        # gpt_response_json = self.generate_gpt3_response(user_text)
+        # --------------------------------получение ответа от ChatGPT--------------------------------
+
+        # --------------------------------заглушка с ответом ChatGPT--------------------------------
+        gpt_response_json = '{"name": "Куриное филе с ананасом и беконом", "spisok": ["курица", "ананасы", "бекон"], ' \
+                            '"instruction": "1. Нарежьте бекон на мелкие кусочки. ' \
+                            'Обжарьте их на сковороде до полуготовности. Выложите на блюдо. ' \
+                            '2. Нарежьте куриное филе на кусочки. ' \
+                            'Обжарьте их на сковороде до полуготовности. Выложите на блюдо. ' \
+                            '3. Нарежьте ананас на кусочки. Выложите на блюдо. ' \
+                            '4. Посолите и поперчите по вкусу. ' \
+                            '5. Запекайте в духовке при температуре 200 градусов примерно 20 минут. ' \
+                            '6. Подавайте горячим."}'
+        # --------------------------------заглушка с ответом ChatGPT--------------------------------
+
+        gpt_response_dict = json.loads(gpt_response_json)
+        context['gpt_recipe_name'] = gpt_response_dict['name']
+        context['gpt_recipe_ingredients'] = gpt_response_dict['spisok']
+        context['gpt_recipe_description'] = gpt_response_dict['instruction']
+
+        return context
+
+    @staticmethod
+    def generate_gpt3_response(user_text, print_output=False):
+        """
+        Query OpenAI GPT-3 for the specific key and get back a response
+        :type user_text: str the user's text to query for
+        :type print_output: boolean whether or not to print the raw output JSON
+        """
+        ai.api_key = os.getenv('GPT_API_KEY')
+
+        completions = ai.Completion.create(
+            engine='text-davinci-003',  # Determines the quality, speed, and cost.
+            temperature=0.5,            # Level of creativity in the response
+            prompt=user_text,           # What the user typed in
+            max_tokens=1024,             # Maximum tokens in the prompt AND response
+            n=1,                        # The number of completions to generate
+            stop=None,                  # An optional setting to control response generation
+        )
+
+        # Return the first choice's text
+        return completions.choices[0].text
 
 
 class HomeView(TemplateView):
