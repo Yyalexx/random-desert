@@ -20,14 +20,14 @@
     <section class="title">
         <div class="title__content">
             <div class="title__text">
-                <h1>Lorem ipsum dolor sit amet consectetur.</h1>
+                <h1>{{ gpt_recipe_name }}</h1>
             </div>
             <div class="title__ingr">
                 <div class="ingr__text">
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto eligendi cumque reprehenderit
-                        exercitationem sit, ut, veniam maiores praesentium facilis nobis suscipit officia laudantium.
-                        Iusto suscipit quidem enim sapiente modi iure.
+                        {% for ingr in gpt_recipe_ingredients %}
+                            {{ ingr }}
+                        {% endfor %}
                     </p>
                 </div>
                 <img class="ingr__img" src="/static/images/star3.svg" alt="">
@@ -38,13 +38,8 @@
     <section class="cooking">
         <div class="cooking__content">
             <div class="cooking__text">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate veniam harum dolores nostrum
-                    dolorem
-                    in? Quaerat sint reiciendis vel alias, magnam, totam labore, fugit a nulla fugiat voluptatum natus
-                    consequuntur at dignissimos illo incidunt ratione possimus sapiente sunt omnis dolorum nobis
-                    molestias.
-                    Eos et id distinctio reiciendis officiis quam placeat! Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. Dolore reiciendis fugit voluptatum ut atque odio ipsa quasi distinctio facere quo!
+                <p>
+                   {{ gpt_recipe_description }}
                 </p>
             </div>
             <img class="cooking__arrow" src="/static/images/curl_arrow.svg" alt="">
