@@ -11,7 +11,7 @@ for (let i = 0; i < ingredientsListNodes.length; i++) {
     for (let j = 0; j < ingredients[i].length; j++) {
         let ingred = `
             <li class="ingredient">
-                <input type="checkbox" class="custom-checkbox" name="ingredient${i}${j}" id="ingredient${i}${j}" onclick="return checkboxLimit()" form="search-form">
+                <input type="checkbox" class="custom-checkbox" name="ingredients" value="${ingredients[i][j]}" id="ingredient${i}${j}" onclick="return checkboxLimit()">
                 <label for="ingredient${i}${j}">${ingredients[i][j]}</label>
             </li>
         `
