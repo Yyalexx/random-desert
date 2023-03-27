@@ -10,7 +10,6 @@ btnModalClose.addEventListener('click', () => {
 })
 
 
-
 const dropdowns = document.querySelectorAll('.dropdown');
 for (let dropdown of dropdowns) {
     const btn = dropdown.querySelector('.dropbtn');
@@ -23,22 +22,23 @@ for (let dropdown of dropdowns) {
     }
 
     btn.addEventListener('click', function (e) {
-        e.stopPropagation();
+        // console.log('click dropdown', menu.id);
+        e.preventDefault();
         toggleMenu();
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener('click', function (e) {
         const target = e.target;
         const its_menu = target == menu || menu.contains(target);
-        const its_btn = target == btn;
-        const menu_is_active = menu.classList.contains("show");
+        const its_btn = target == btn || btn.contains(target);
+        const menu_is_active = menu.classList.contains('show');
 
         if (!its_menu && !its_btn && menu_is_active) {
+            // console.log('hiding menu', menu.id);
             toggleMenu();
         }
     });
 }
-
 
 
 const ingredients = [
@@ -61,7 +61,6 @@ for (let i = 0; i < ingredientsListNodes.length; i++) {
     }
     ingredientsListNodes[i].insertAdjacentHTML('afterbegin', ingreds);
 }
-
 
 
 const cuisines = [

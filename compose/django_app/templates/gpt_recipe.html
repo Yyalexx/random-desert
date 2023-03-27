@@ -39,13 +39,14 @@
         <div class="cooking__content">
             <div class="cooking__text">
                 <p>
-                   {{ gpt_recipe_description }}
+                    {{ gpt_recipe_description }}
                 </p>
             </div>
-            <img class="cooking__arrow" src="/static/images/curl_arrow.svg" alt="">
+            <button class="btn btn__gpt_print"><img src="/static/images/printer.svg" alt="printer">Печать</button>
+            <img class="cooking__arrow" src="/static/images/curl_arrow.svg" alt="arrow">
         </div>
-
     </section>
+    <script src="/static/js/gpt_recipe.js"></script>
 </body>
 
 </html>

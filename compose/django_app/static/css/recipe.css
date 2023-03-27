@@ -404,9 +404,9 @@ li {
 }
 
 @media print {
-    @page {
-        margin: 2cm;
-    }
+        @page {
+            size: 2480px 3508px;
+        }
 
     * {
         background: transparent !important;
@@ -415,13 +415,15 @@ li {
         text-shadow: none !important;
     }
 
-    p,
+    /* p,
     .instruction__text {
-        font-size: 20px;
-    }
+        font-size: 30px;
+    } */
 
     .search-form,
+    .title__rating,
     .title__img,
+    .info,
     .ingredients_img,
     .instruction_img,
     .btn {
@@ -435,5 +437,9 @@ li {
     .title,
     .title__wrapper {
         height: auto;
+    }
+
+    .title__bottom {
+        justify-content: center;
     }
 }
