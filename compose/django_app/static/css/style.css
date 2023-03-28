@@ -58,7 +58,7 @@ header {
     overflow: hidden;
 }
 
-.dropdown .dropbtn {
+.dropbtn {
     padding: 0;
     margin: 0;
     width: 100%;
@@ -72,7 +72,7 @@ header {
     font-weight: 600;
     font-size: 32px;
     line-height: 39px;
-    background-color: inherit;
+    background-color: #FFF1D7;
     cursor: pointer;
 }
 
@@ -109,6 +109,10 @@ header {
 
 .show {
     display: block;
+}
+
+.active {
+    background-color: #FFF9ED;
 }
 
 .category,

@@ -25,11 +25,6 @@ h3 {
     z-index: 1;
 }
 
-.header a {
-    padding: 20px;
-    background-color: #FFF1D7;
-}
-
 .logo {
     width: 192.5px;
 }
@@ -117,7 +112,7 @@ h3 {
 }
 
 .card:hover {
-    opacity: 0.7;
+    box-shadow: 4px 4px 0px #EE5230;
 }
 
 .card__image {

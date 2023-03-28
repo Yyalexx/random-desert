@@ -17,8 +17,9 @@ for (let dropdown of dropdowns) {
     const img = dropdown.querySelector('.dropbtn img');
 
     const toggleMenu = function () {
-        menu.classList.toggle("show");
-        img.classList.toggle("rotate");
+        menu.classList.toggle('show');
+        img.classList.toggle('rotate');
+        btn.classList.toggle('active');
     }
 
     btn.addEventListener('click', function (e) {
