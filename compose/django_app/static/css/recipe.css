@@ -253,7 +253,7 @@ li {
 .ingredients__head {
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
 }
 
 .ingredients_title {
@@ -290,7 +290,7 @@ li {
 .instruction__head {
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+    /* margin-bottom: 14px; */
 }
 
 .instruction_img {

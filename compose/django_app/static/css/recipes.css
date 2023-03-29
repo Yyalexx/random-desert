@@ -112,7 +112,8 @@ h3 {
 }
 
 .card:hover {
-    box-shadow: 4px 4px 0px #EE5230;
+    background: rgba(0, 0, 0, 0.3);
+    border: 6px solid #EE5230;
 }
 
 .card__image {
@@ -162,7 +163,7 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 55px 0 25px;
+    padding-top: 55px;
 }
 
 .card__time {

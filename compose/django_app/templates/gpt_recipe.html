@@ -17,35 +17,38 @@
         </a>
     </header>
 
-    <section class="title">
-        <div class="title__content">
-            <div class="title__text">
-                <h1>{{ gpt_recipe_name }}</h1>
-            </div>
-            <div class="title__ingr">
-                <div class="ingr__text">
-                    <p>
-                        {% for ingr in gpt_recipe_ingredients %}
-                            {{ ingr }}
-                        {% endfor %}
-                    </p>
-                </div>
-                <img class="ingr__img" src="/static/images/star3.svg" alt="">
-            </div>
-        </div>
-        <img class="title__img" src="/static/images/pancakes.png" alt="">
-    </section>
-    <section class="cooking">
-        <div class="cooking__content">
-            <div class="cooking__text">
-                <p>
-                    {{ gpt_recipe_description }}
-                </p>
+    <main class="recipe">
+        <div class="recipe__left">
+            <h1 class="recipe__title">Курица, говядина, свинина</h1>
+            <div class="recipe__content">
+                <p class="recipe__text">Ингредиенты:
+                
+                500 грамм говядины
+                200 грамм бекона
+                2 столовые ложки масла растительного
+                200 грамм сливок
+                
+                Приготовление:
+                
+                1. Нарежьте бекон и говядину небольшими кусочками.
+                
+                2. В кастрюле разогрейте масло и добавьте бекон. Продолжайте жарить до полуготовности.
+                
+                3. Добавьте говядину и продолжайте жарить до полной готовности.
+                
+                4. Добавьте сливки и продолжайте жарить до загустения.
+                
+                5. Переложите в блюдо для подачи и подавайте горячим.</p>
+                <img class="recipe__text__img" src="/static/images/star3.svg" alt="star">
             </div>
             <button class="btn btn__gpt_print"><img src="/static/images/printer.svg" alt="printer">Печать</button>
-            <img class="cooking__arrow" src="/static/images/curl_arrow.svg" alt="arrow">
+            
         </div>
-    </section>
+        <div class="recipe__right">
+            <img class="recipe__img" src="/static/images/pancakes.png" alt="pancakes">
+            <img class="recipe__arrow" src="/static/images/curl_arrow.svg" alt="arrow">
+        </div>
+    </main>
     <script src="/static/js/gpt_recipe.js"></script>
 </body>
 
