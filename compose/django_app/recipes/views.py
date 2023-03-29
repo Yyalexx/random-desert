@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
 from .models import Recipe, Connections
+from .config import gpt_response_json, gpt_response, gpt_response_complex  # закоментить, если подключаемся к ChatGPT
 
 import openai as ai
 from dotenv import load_dotenv
@@ -41,6 +42,7 @@ class GPTResultView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         ingredients = self.request.GET.getlist('ingredients')
+        context['ingredients'] = ', '.join(ingredients)
         user_text = 'Придумай, пожалуйста, рецепт блюда со следующими ингредиентами: ' + ', '.join(ingredients) + \
                     '. Выведи его в формате json, название рецепта помести в поле "name", ' \
                     'список ингредиентов помести в поле "spisok", ' \
@@ -52,40 +54,12 @@ class GPTResultView(TemplateView):
         # gpt_response = self.generate_gpt3_response(user_text_string)  # Получение ответа в одной строке
         # -------------------получение ответа от ChatGPT (!!! использовать строчки по отдельности!!!)-------------------
 
-        # --------------------------------заглушка с ответами ChatGPT--------------------------------
-        gpt_response_json = '{"name": "Рыба с помидорами и сыром в тандыре", ' \
-                            '"spisok": ["рыба (филе) - 500г.", "помидоры - 3шт.", "сыр - 150г.", ' \
-                            '"чеснок - 3 зубчика", "укроп - 1/2 пучка", "масло растительное - 2 ст. ложки", ' \
-                            '"соль - по вкусу", "перец - по вкусу"], ' \
-                            '"instruction": "1. Помидоры нарезать крупными кольцами, сыр натереть на мелкой терке, ' \
-                            'чеснок мелко нарезать, укроп измельчить. 2. Рыбу нарезать на порции. ' \
-                            '3. Взять керамическую тандырную посуду, на дно налить растительное масло. ' \
-                            '4. На дно тандыра выложить помидоры, сверху распределить нарезанную рыбу, ' \
-                            'посыпать чесноком, солью и перцем. 5. Сверху выложить натертый сыр ' \
-                            'и посыпать мелко нарезанным укропом. 6. Закрыть тандыр крышкой и поставить в духовку ' \
-                            'на 40-50 минут при температуре 180 градусов"}'
-        gpt_response = 'Предлагаю приготовить рыбу в сырно-помидорном соусе. Ингредиенты: 4 куска рыбы ' \
-                       '(например, тилапия или треска), 2 больших помидора, нарезанных кубиками, ' \
-                       '1 чашка тертого сыра (например, чеддер или моцарелла), 2 столовые ложки оливкового масла, ' \
-                       'соль и перец по вкусу. Инструкции: Разогрейте духовку до 200 градусов. ' \
-                       'Разогрейте оливковое масло в большой сковороде на среднем огне. ' \
-                       'Обжарьте помидоры до мягкости, примерно 5 минут. ' \
-                       'Добавьте в сковороду рыбу и обжаривайте ее до золотистой корочки с обеих сторон, ' \
-                       'примерно по 3-4 минуты на каждую сторону. Уберите сковороду с огня, ' \
-                       'посолите и поперчите по вкусу. Посыпьте тертым сыром сверху рыбы и помидоров. ' \
-                       'Перенесите сковороду в духовку и готовьте, пока сыр не растает ' \
-                       'и не станет золотистого цвета, примерно 5-7 минут. ' \
-                       'Ваша рыба в сырно-помидорном соусе готова! ' \
-                       'Подайте ее горячей с любимой гарниром или овощным салатом.'
+        # gpt_response_dict = json.loads(gpt_response_json, strict=False)
+        # context['gpt_recipe_name'] = gpt_response_dict['name']
+        # context['gpt_recipe_ingredients'] = gpt_response_dict['spisok']
+        # context['gpt_recipe_description'] = gpt_response_dict['instruction']
 
-        # --------------------------------заглушка с ответами ChatGPT--------------------------------
-
-        gpt_response_dict = json.loads(gpt_response_json, strict=False)
-        context['gpt_recipe_name'] = gpt_response_dict['name']
-        context['gpt_recipe_ingredients'] = gpt_response_dict['spisok']
-        context['gpt_recipe_description'] = gpt_response_dict['instruction']
-
-        context['gpt_recipe'] = gpt_response
+        context['gpt_recipe'] = gpt_response_complex  # выбрать один из вариантов рецепта в config.py
 
         return context
 
