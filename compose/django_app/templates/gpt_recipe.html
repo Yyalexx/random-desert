@@ -19,26 +19,9 @@
 
     <main class="recipe">
         <div class="recipe__left">
-            <h1 class="recipe__title">Курица, говядина, свинина</h1>
+            <h1 class="recipe__title">{{ ingredients }}</h1>
             <div class="recipe__content">
-                <p class="recipe__text">Ингредиенты:
-                
-                500 грамм говядины
-                200 грамм бекона
-                2 столовые ложки масла растительного
-                200 грамм сливок
-                
-                Приготовление:
-                
-                1. Нарежьте бекон и говядину небольшими кусочками.
-                
-                2. В кастрюле разогрейте масло и добавьте бекон. Продолжайте жарить до полуготовности.
-                
-                3. Добавьте говядину и продолжайте жарить до полной готовности.
-                
-                4. Добавьте сливки и продолжайте жарить до загустения.
-                
-                5. Переложите в блюдо для подачи и подавайте горячим.</p>
+                <p class="recipe__text">{{ gpt_recipe }}</p>
                 <img class="recipe__text__img" src="/static/images/star3.svg" alt="star">
             </div>
             <button class="btn btn__gpt_print"><img src="/static/images/printer.svg" alt="printer">Печать</button>
