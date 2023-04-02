@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   web:
+    image: simolendev/randomdesert:localhost
     build: ./django_app
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
@@ -13,13 +14,15 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:latest
+    image: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
+      POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:
