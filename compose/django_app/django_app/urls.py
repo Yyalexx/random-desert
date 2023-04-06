@@ -18,7 +18,7 @@ from django.urls import path, include
 from recipes.views import GPTView, HomeView, GPTResultView
 
 urlpatterns = [
-    path('', HomeView.as_view()),
+    path('', HomeView.as_view(), name='homepage'),
     path('admin/', admin.site.urls),
     path('recipes/', include('recipes.urls')),
     path('gpt/', GPTView.as_view()),
