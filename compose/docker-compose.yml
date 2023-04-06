@@ -2,8 +2,10 @@ version: '3.8'
 
 services:
   web:
-    image: simolendev/randomdesert:localhost
-    build: ./django_app
+    image: simonlendev/randomdesert-localhost:linux.amd64
+    build:
+      context: ./django_app
+      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./django_app:/usr/src/app/
