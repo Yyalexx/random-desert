@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
 from .models import Recipe, Connections
-# from .config import gpt_response_json, gpt_response, gpt_response_complex  # закоментить, если подключаемся к ChatGPT
+from .config import gpt_response  # закоментить, если подключаемся к ChatGPT
 
 import openai as ai
 from dotenv import load_dotenv
@@ -43,21 +43,11 @@ class GPTResultView(TemplateView):
         context = super().get_context_data()
         ingredients = self.request.GET.getlist('ingredients')
         context['ingredients'] = ', '.join(ingredients)
-        user_text = 'Придумай, пожалуйста, рецепт блюда со следующими ингредиентами: ' + ', '.join(ingredients) + \
-                    '. Выведи его в формате json, название рецепта помести в поле "name", ' \
-                    'список ингредиентов помести в поле "spisok", ' \
-                    'инструкцию приготовления помести в поле "instruction".'
         user_text_string = 'Придумай, пожалуйста, рецепт блюда со следующими ингредиентами: ' + ', '.join(ingredients)
 
-        # -------------------получение ответа от ChatGPT (!!! использовать строчки по отдельности!!!)-------------------
-        # gpt_response_json = self.generate_gpt3_response(user_text)  # Получение ответа в json подобном формате
-        gpt_response = self.generate_gpt3_response(user_text_string)  # Получение ответа в одной строке
-        # -------------------получение ответа от ChatGPT (!!! использовать строчки по отдельности!!!)-------------------
-
-        # gpt_response_dict = json.loads(gpt_response_json, strict=False)
-        # context['gpt_recipe_name'] = gpt_response_dict['name']
-        # context['gpt_recipe_ingredients'] = gpt_response_dict['spisok']
-        # context['gpt_recipe_description'] = gpt_response_dict['instruction']
+        # -------------------получение ответа от ChatGPT -------------------
+        # gpt_response = self.generate_gpt3_response(user_text_string)
+        # -------------------получение ответа от ChatGPT -------------------
 
         context['gpt_recipe'] = gpt_response  # openai api или config.py
 
